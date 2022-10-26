@@ -11,17 +11,20 @@ const login = async (email, password) => {
     err.statusCode = 400;
     throw err;
   }
+
   const token = jwtUtil.createToken({ userId: user.id, userName: user.displayName });
   return { statusCode: 200, result: { token } };
 };
 
 const insert = async (newUser) => {
   const { displayName, email, password, image } = userValidation.validateUserData(newUser);
+
   if (await getByEmail(email)) {
     const err = new Error('User already registered');
     err.statusCode = 409;
     throw err;
   }
+
   const { id } = await User.create({ displayName, email, password, image });
   const token = jwtUtil.createToken({ userId: id, userName: displayName });
   return { statusCode: 201, result: { token } };
@@ -43,6 +46,7 @@ const getById = async (userId) => {
     err.statusCode = 404;
     throw err;
   }
+
   const { password: _, ...formatedUser } = user.dataValues;
   return { statusCode: 200, result: formatedUser };
 };
