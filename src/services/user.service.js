@@ -4,6 +4,17 @@ const jwtUtil = require('../utils/jwt.util');
 
 const getByEmail = async (email) => User.findOne({ where: { email } });
 
+const login = async (email, password) => {
+  const user = await getByEmail(email);
+  if (!user || user.password !== password) {
+    const err = new Error('Invalid fields');
+    err.statusCode = 400;
+    throw err;
+  }
+  const token = jwtUtil.createToken({ userId: user.id, userName: user.displayName });
+  return { statusCode: 200, result: { token } };
+};
+
 const insert = async (newUser) => {
   const { displayName, email, password, image } = userValidation.validateUserData(newUser);
   if (await getByEmail(email)) {
@@ -16,18 +27,17 @@ const insert = async (newUser) => {
   return { statusCode: 201, result: { token } };
 };
 
-const login = async (email, password) => {
-  const user = await getByEmail(email);
-  if (!user || user.password !== password) {
-    const err = new Error('Invalid fields');
-    err.statusCode = 400;
-    throw err;
-  }
-  const token = jwtUtil.createToken({ userId: user.id, userName: user.displayName });
-  return { statusCode: 200, result: { token } };
+const getAll = async () => {
+  const users = await User.findAll();
+  const formatedUsers = users.map((user) => {
+    const { password: _, ...formatedUser } = user.dataValues;
+    return formatedUser;
+  });
+  return { statusCode: 200, result: formatedUsers };
 };
 
 module.exports = {
   login,
   insert,
+  getAll,
 };
