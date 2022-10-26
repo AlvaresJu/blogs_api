@@ -10,8 +10,6 @@ app.use(express.json());
 
 app.use('/login', loginRoutes);
 
-app.use((_req, res) => res.sendStatus(404));
-
 app.use(handleError);
 
 module.exports = app;
