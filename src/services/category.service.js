@@ -14,6 +14,12 @@ const insert = async (newCategory) => {
   return { statusCode: 201, result: category };
 };
 
+const getAll = async () => {
+  const categories = await Category.findAll();
+  return { statusCode: 200, result: categories };
+};
+
 module.exports = {
   insert,
+  getAll,
 };
