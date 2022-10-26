@@ -10,5 +10,6 @@ router.post('/', validateUserFields, userController.insert);
 
 router.use(validateAuth);
 router.get('/', userController.getAll);
+router.get('/:id', userController.getById);
 
 module.exports = router;

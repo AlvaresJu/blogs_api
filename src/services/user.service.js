@@ -36,8 +36,20 @@ const getAll = async () => {
   return { statusCode: 200, result: formatedUsers };
 };
 
+const getById = async (userId) => {
+  const user = await User.findByPk(userId);
+  if (!user) {
+    const err = new Error('User does not exist');
+    err.statusCode = 404;
+    throw err;
+  }
+  const { password: _, ...formatedUser } = user.dataValues;
+  return { statusCode: 200, result: formatedUser };
+};
+
 module.exports = {
   login,
   insert,
   getAll,
+  getById,
 };
