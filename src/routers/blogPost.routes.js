@@ -8,5 +8,6 @@ const router = express.Router();
 
 router.use(validateAuth);
 router.post('/', validateBlogPostFields, blogPostController.insert);
+router.get('/', blogPostController.getAll);
 
 module.exports = router;

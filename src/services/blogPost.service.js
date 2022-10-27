@@ -2,7 +2,7 @@ require('dotenv').config();
 const Sequelize = require('sequelize');
 const { Op } = require('sequelize');
 
-const { BlogPost, Category, PostCategory } = require('../models');
+const { BlogPost, Category, PostCategory, User } = require('../models');
 const blogPostValidation = require('./validations/blogPost.validation');
 const config = require('../config/config');
 
@@ -45,10 +45,21 @@ const insert = async (postData, userId) => {
     err.statusCode = 400;
     throw err;
   }
-
   return managedInsert({ title, content, published, updated, userId }, categoryIds);
+};
+
+const getAll = async () => {
+  const posts = await BlogPost.findAll({
+    include: [{
+      model: User, as: 'user', attributes: { exclude: ['password'] },
+    }, {
+      model: Category, as: 'categories', through: { attributes: [] },
+    }],
+  });
+  return { statusCode: 200, result: posts };
 };
 
 module.exports = {
   insert,
+  getAll,
 };

@@ -10,6 +10,12 @@ const insert = async (req, res) => {
   return res.status(statusCode).json(result);
 };
 
+const getAll = async (_req, res) => {
+  const { statusCode, result } = await blogPostService.getAll();
+  return res.status(statusCode).json(result);
+};
+
 module.exports = {
   insert,
+  getAll,
 };
