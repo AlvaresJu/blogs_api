@@ -9,6 +9,11 @@ const config = require('../config/config');
 const env = process.env.NODE_ENV || 'development';
 const sequelize = new Sequelize(config[env]);
 
+const getIncludeConfig = { include: [
+  { model: User, as: 'user', attributes: { exclude: ['password'] } },
+  { model: Category, as: 'categories', through: { attributes: [] } },
+] };
+
 const checkCategories = async (categoryIds) => {
   const { count } = await Category.findAndCountAll({
     where: { id: { [Op.or]: categoryIds } },
@@ -49,17 +54,22 @@ const insert = async (postData, userId) => {
 };
 
 const getAll = async () => {
-  const posts = await BlogPost.findAll({
-    include: [{
-      model: User, as: 'user', attributes: { exclude: ['password'] },
-    }, {
-      model: Category, as: 'categories', through: { attributes: [] },
-    }],
-  });
+  const posts = await BlogPost.findAll(getIncludeConfig);
   return { statusCode: 200, result: posts };
+};
+
+const getById = async (postId) => {
+  const post = await BlogPost.findByPk(postId, getIncludeConfig);
+  if (!post) {
+    const err = new Error('Post does not exist');
+    err.statusCode = 404;
+    throw err;
+  }
+  return { statusCode: 200, result: post };
 };
 
 module.exports = {
   insert,
   getAll,
+  getById,
 };

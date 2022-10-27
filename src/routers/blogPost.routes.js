@@ -9,5 +9,6 @@ const router = express.Router();
 router.use(validateAuth);
 router.post('/', validateBlogPostFields, blogPostController.insert);
 router.get('/', blogPostController.getAll);
+router.get('/:id', blogPostController.getById);
 
 module.exports = router;
