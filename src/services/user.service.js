@@ -49,9 +49,15 @@ const getById = async (userId) => {
   return { statusCode: 200, result: user };
 };
 
+const deleteById = async (userId) => {
+  await User.destroy({ where: { id: userId } });
+  return { statusCode: 204 };
+};
+
 module.exports = {
   login,
   insert,
   getAll,
   getById,
+  deleteById,
 };
