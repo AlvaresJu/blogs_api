@@ -5,8 +5,7 @@ const categoryIdSchema = Joi.number().integer().min(1);
 const postSchema = Joi.object({
   title: Joi.string().min(1).max(255).required(),
   content: Joi.string().min(1).max(255).required(),
-  categoryIds: Joi.array().min(1).items(categoryIdSchema).unique()
-    .required(),
+  categoryIds: Joi.array().min(1).items(categoryIdSchema).unique(),
   published: Joi.date(),
   updated: Joi.date(),
 });

@@ -7,8 +7,9 @@ const validateAuth = require('../middlewares/validateAuth');
 const router = express.Router();
 
 router.use(validateAuth);
-router.post('/', validateBlogPostFields, blogPostController.insert);
+router.post('/', validateBlogPostFields.toInsert, blogPostController.insert);
 router.get('/', blogPostController.getAll);
 router.get('/:id', blogPostController.getById);
+router.put('/:id', validateBlogPostFields.toUpdate, blogPostController.update);
 
 module.exports = router;

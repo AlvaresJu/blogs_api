@@ -68,8 +68,26 @@ const getById = async (postId) => {
   return { statusCode: 200, result: post };
 };
 
+const update = async (postId, userId, dataToUpdate) => {
+  const { title, content, published, updated } = blogPostValidation.validatePostData(dataToUpdate);
+
+  const { result } = await getById(postId);
+  if (result.userId !== userId) {
+    const err = new Error('Unauthorized user');
+    err.statusCode = 401;
+    throw err;
+  }
+
+  await BlogPost.update(
+    { title, content, published, updated },
+    { where: { id: postId } },
+  );
+  return getById(postId);
+};
+
 module.exports = {
   insert,
   getAll,
   getById,
+  update,
 };
