@@ -32,21 +32,20 @@ const insert = async (newUser) => {
 
 const getAll = async () => {
   const users = await User.findAll({
-    attributes: ['id', 'displayName', 'email', 'image'],
+    attributes: { exclude: ['password'] },
   });
   return { statusCode: 200, result: users };
 };
 
 const getById = async (userId) => {
   const user = await User.findByPk(userId, {
-    attributes: ['id', 'displayName', 'email', 'image'],
+    attributes: { exclude: ['password'] },
   });
   if (!user) {
     const err = new Error('User does not exist');
     err.statusCode = 404;
     throw err;
   }
-
   return { statusCode: 200, result: user };
 };
 
