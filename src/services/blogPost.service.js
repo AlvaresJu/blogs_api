@@ -58,6 +58,19 @@ const getAll = async () => {
   return { statusCode: 200, result: posts };
 };
 
+const getAllByTerm = async (searchedTerm) => {
+  if (!searchedTerm) return getAll();
+
+  const searchedPosts = await BlogPost.findAll({
+    where: { [Op.or]: [
+      { title: { [Op.substring]: searchedTerm } },
+      { content: { [Op.substring]: searchedTerm } },
+    ] },
+    include: getIncludeConfig.include,
+  });
+  return { statusCode: 200, result: searchedPosts };
+};
+
 const getById = async (postId) => {
   const post = await BlogPost.findByPk(postId, getIncludeConfig);
   if (!post) {
@@ -99,6 +112,7 @@ const deleteById = async (postId, userId) => {
 module.exports = {
   insert,
   getAll,
+  getAllByTerm,
   getById,
   updateById,
   deleteById,

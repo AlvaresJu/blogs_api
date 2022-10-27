@@ -15,6 +15,13 @@ const getAll = async (_req, res) => {
   return res.status(statusCode).json(result);
 };
 
+const getAllByTerm = async (req, res) => {
+  const { q } = req.query;
+
+  const { statusCode, result } = await blogPostService.getAllByTerm(q);
+  return res.status(statusCode).json(result);
+};
+
 const getById = async (req, res) => {
   const { id } = req.params;
 
@@ -47,6 +54,7 @@ const deleteById = async (req, res) => {
 module.exports = {
   insert,
   getAll,
+  getAllByTerm,
   getById,
   updateById,
   deleteById,
