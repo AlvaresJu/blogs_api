@@ -10,6 +10,7 @@ router.use(validateAuth);
 router.post('/', validateBlogPostFields.toInsert, blogPostController.insert);
 router.get('/', blogPostController.getAll);
 router.get('/:id', blogPostController.getById);
-router.put('/:id', validateBlogPostFields.toUpdate, blogPostController.update);
+router.put('/:id', validateBlogPostFields.toUpdate, blogPostController.updateById);
+router.delete('/:id', blogPostController.deleteById);
 
 module.exports = router;

@@ -68,15 +68,20 @@ const getById = async (postId) => {
   return { statusCode: 200, result: post };
 };
 
-const update = async (postId, userId, dataToUpdate) => {
-  const { title, content, published, updated } = blogPostValidation.validatePostData(dataToUpdate);
-
+const checkPostAndOwner = async (postId, userId) => {
   const { result } = await getById(postId);
   if (result.userId !== userId) {
     const err = new Error('Unauthorized user');
     err.statusCode = 401;
     throw err;
   }
+  return result;
+};
+
+const updateById = async (postId, userId, dataToUpdate) => {
+  const { title, content, published, updated } = blogPostValidation.validatePostData(dataToUpdate);
+
+  await checkPostAndOwner(postId, userId);
 
   await BlogPost.update(
     { title, content, published, updated },
@@ -85,9 +90,16 @@ const update = async (postId, userId, dataToUpdate) => {
   return getById(postId);
 };
 
+const deleteById = async (postId, userId) => {
+  await checkPostAndOwner(postId, userId);
+  await BlogPost.destroy({ where: { id: postId } });
+  return { statusCode: 204 };
+};
+
 module.exports = {
   insert,
   getAll,
   getById,
-  update,
+  updateById,
+  deleteById,
 };

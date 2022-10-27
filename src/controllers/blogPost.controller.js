@@ -17,11 +17,12 @@ const getAll = async (_req, res) => {
 
 const getById = async (req, res) => {
   const { id } = req.params;
+
   const { statusCode, result } = await blogPostService.getById(id);
   return res.status(statusCode).json(result);
 };
 
-const update = async (req, res) => {
+const updateById = async (req, res) => {
   const { title, content, published, updated } = req.body;
   const { userId } = req.user;
   const { id } = req.params;
@@ -29,15 +30,24 @@ const update = async (req, res) => {
   let updateDate = updated;
   if (!updated) updateDate = new Date();
 
-  const { statusCode, result } = await blogPostService.update(id, userId, {
+  const { statusCode, result } = await blogPostService.updateById(id, userId, {
     title, content, published, updated: updateDate,
   });
   return res.status(statusCode).json(result);
+};
+
+const deleteById = async (req, res) => {
+  const { userId } = req.user;
+  const { id } = req.params;
+
+  const { statusCode } = await blogPostService.deleteById(id, userId);
+  return res.status(statusCode).end();
 };
 
 module.exports = {
   insert,
   getAll,
   getById,
-  update,
+  updateById,
+  deleteById,
 };
