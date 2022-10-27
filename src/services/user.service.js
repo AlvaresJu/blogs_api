@@ -31,24 +31,23 @@ const insert = async (newUser) => {
 };
 
 const getAll = async () => {
-  const users = await User.findAll();
-  const formatedUsers = users.map((user) => {
-    const { password: _, ...formatedUser } = user.dataValues;
-    return formatedUser;
+  const users = await User.findAll({
+    attributes: ['id', 'displayName', 'email', 'image'],
   });
-  return { statusCode: 200, result: formatedUsers };
+  return { statusCode: 200, result: users };
 };
 
 const getById = async (userId) => {
-  const user = await User.findByPk(userId);
+  const user = await User.findByPk(userId, {
+    attributes: ['id', 'displayName', 'email', 'image'],
+  });
   if (!user) {
     const err = new Error('User does not exist');
     err.statusCode = 404;
     throw err;
   }
 
-  const { password: _, ...formatedUser } = user.dataValues;
-  return { statusCode: 200, result: formatedUser };
+  return { statusCode: 200, result: user };
 };
 
 module.exports = {
