@@ -34,8 +34,7 @@ const updateById = async (req, res) => {
   const { userId } = req.user;
   const { id } = req.params;
 
-  let updateDate = updated;
-  if (!updated) updateDate = new Date();
+  const updateDate = updated || new Date();
 
   const { statusCode, result } = await blogPostService.updateById(id, userId, {
     title, content, published, updated: updateDate,
