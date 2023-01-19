@@ -5,7 +5,7 @@ services:
   node:
     # Faz o build do Dockerfile da pasta atual e utiliza o resultado desse build
     # como a imagem do container
-    build: ./api
+    build: .
     # Define um user específico, diferente de root para a execução dos comandos
     # user: eval
     # Nome do container para facilitar execução
