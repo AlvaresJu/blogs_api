@@ -68,7 +68,7 @@
 
   - Construção de banco de dados MySQL com base no seguinte diagrama de Entidade-Relacionamento fornecido pela [Trybe](https://www.betrybe.com/):
 
-    [![Diagrama ER do Banco][der-screenshot]]
+    ![Diagrama ER do Banco][der-screenshot]
     Fonte: TRYBE, 2022
 
   - API REST com os seguintes endpoints, conectados ao banco de dados:
@@ -114,9 +114,9 @@
   
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[product-screenshot]: images/screenshot_doc.png
-[routes-screenshot]: images/screenshot_routes.png
-[der-screenshot]: images/der.png
+[product-screenshot]: api/images/screenshot_doc.png
+[routes-screenshot]: api/images/screenshot_routes.png
+[der-screenshot]: api/images/der.png
 <!-- [product-gif]: images/features.gif -->
 [MySQL-img]: https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white
 [MySQL-url]: https://www.mysql.com/
@@ -130,8 +130,8 @@
 [JWT-url]: https://jwt.io/
 [JavaScript-img]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
 [JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
-[Doker-img]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
-[Doker-url]: https://www.docker.com/
+[Docker-img]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
 [Postman-img]: https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white
 [Postman-url]: https://www.postman.com/
 [Railway-img]: https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white
