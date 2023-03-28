@@ -68,7 +68,7 @@
 
   - Construção de banco de dados MySQL com base no seguinte diagrama de Entidade-Relacionamento fornecido pela [Trybe](https://www.betrybe.com/):
 
-    [![Diagrama ER do Banco][der-screenshot]]
+    ![Diagrama ER do Banco][der-screenshot]
     Fonte: TRYBE, 2022
 
   - API REST com os seguintes endpoints, conectados ao banco de dados:
