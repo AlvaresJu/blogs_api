@@ -17,18 +17,19 @@
         <li><a href="#funcionalidades-implementadas">Funcionalidades Implementadas</a></li>
       </ul>
     </li>
-    <!-- <li> -->
-      <!-- <a href="#para-iniciar-a-aplicação">Para Iniciar a Aplicação</a>
+    <li>
+      <a href="#para-iniciar-a-aplicação-localmente">Para Iniciar a Aplicação Localmente</a>
       <ul>
         <li><a href="#pré-requisitos">Pré-requisitos</a></li>
         <li><a href="#clonando-o-repositório">Clonando o Repositório</a></li>
-        <li><a href="#rodando-docker">Rodando Docker</a></li>
+        <li><a href="#rodando-serviços-com-docker-compose">Rodando Serviços com docker-compose</a></li>
         <li><a href="#acessando-container-e-instalando-dependências">Acessando Container e Instalando Dependências</a></li>
-        <li><a href="#executando-a-aplicação">Executando a Aplicação</a></li> -->
+        <li><a href="#subindo-banco-de-dados-e-executando-a-aplicação">Subindo Banco de Dados e Executando a Aplicação</a></li>
         <!-- <li><a href="#executando-testes-e-análise-de-cobertura">Executando Testes e Análise de Cobertura</a></li> -->
-      <!-- </ul>
+        <li><a href="#parando-a-aplicação-e-descendo-os-containers">Parando a Aplicação e Descendo os Containers</a></li>
+      </ul>
     </li>
-    <li><a href="#contribuições-e-autoria">Contribuições e Autoria</a></li> -->
+    <li><a href="#contribuições-e-autoria">Contribuições e Autoria</a></li>
   </ol>
 </details>
 
@@ -77,41 +78,53 @@
 
     **Obs.: A explicação detalhada de cada rota pode ser acessada na [Documentação da API](https://documenter.getpostman.com/view/22433291/2s93RMVvf3).**
 
-<!-- # Para Iniciar a Aplicação
-  Para rodar esta aplicação é necessário garantir o cumprimento dos pré-requisitos, fazer uma cópia do repositório e executar as instruções a seguir. Neste projeto é sugerido o uso do Docker, a partir do docker compose já configurado no repositório.
+# Para Iniciar a Aplicação Localmente
+  Para rodar esta aplicação localmente é necessário garantir o cumprimento dos pré-requisitos, fazer uma cópia do repositório e executar as instruções a seguir. Neste projeto é sugerido o uso do Docker, a partir do docker-compose já configurado no repositório, que subirá os serviços `node` e `db`, via containers chamados `blogs_api` e `blogs_api_db`.
 
 ## Pré-requisitos
-  [Node.js](https://nodejs.org/en/) em versão 16 ou superior.
+  * [docker-compose](https://docs.docker.com/compose/) em versão 1.29 ou superior.
+  * Estar com a porta padrão do `mysql` (`3306`) liberada, pois o serviço `db` está configurado no docker-compose para conexão nesta porta.
 
 ## Clonando o Repositório
   ```bash
-    git clone https://github.com/AlvaresJu/trybewallet.git
+    git clone git@github.com:AlvaresJu/blogs_api.git
   ```
-## Instalando Dependências
+## Rodando Serviços com docker-compose
   ```bash
-    cd trybewallet/
+    cd blogs_api/
+    docker-compose up -d --build
+  ``` 
+## Acessando Container e Instalando Dependências
+  ```bash
+    docker exec -it blogs_api bash
     npm install
   ``` 
-## Executando a Aplicação
+## Subindo Banco de Dados e Executando a Aplicação
+ *Obs.: comandos a serem executados de DENTRO do Container `node`*
   ```bash
     npm start
   ```
-## Executando Testes e Análise de Cobertura
+<!-- ## Executando Testes e Análise de Cobertura
   ```bash
     npm test
     npm run test-coverage
   ``` -->
+## Parando a Aplicação e Descendo os Containers
+ *Obs.: comandos a serem executados de FORA do Container `node`*
+  ```bash
+    docker-compose down
+  ```
 
-<!-- # Contribuições e Autorias
+# Contribuições e Autorias
   Como descrito, este projeto foi proposto pela [Trybe](https://www.betrybe.com/) e desenvolvido por _[Juliana Álvares](https://www.linkedin.com/in/juliana-%C3%A1lvares-246872112/)_ durante o curso de Desenvolvimento Web realizado. Por isso, foram disponibilizados pela Trybe alguns arquivos base de configurações e auxiliares ao desenvolvimento do projeto. Segue especificação de autoria dos principais documentos:
   
   Arquivos/diretórios desenvolvidos pela autora do projeto (Juliana Álvares):
-  > /src/**
+  > README.md | api/images/** | api/src/controllers/** | api/src/middlewares/** | api/src/migrations/** | api/src/models/** | api/src/routers/** | api/src/services/** | api/src/utils/** | api/src/app.js
   
   Arquivos/diretórios desenvolvidos pela Trybe:
-  > eslintrc.json , stylelintrc.json , package.json , package-lock.json, estrutura geral da pasta: /src -->
+  > docker-compose.yml | Dockerfile | api/.eslintrc.json | api/package.json | api/package-lock.json | api/.sequelizerc | api/src/config/** | api/src/seeders/** | api/src/server.js | api/src/models/index.js
 
-  
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-screenshot]: api/images/screenshot_doc.png
