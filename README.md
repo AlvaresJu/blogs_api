@@ -115,7 +115,7 @@
     docker-compose down
   ```
 
-# Contribuições e Autorias
+# Contribuições e Autoria
   Como descrito, este projeto foi proposto pela [Trybe](https://www.betrybe.com/) e desenvolvido por _[Juliana Álvares](https://www.linkedin.com/in/juliana-%C3%A1lvares-246872112/)_ durante o curso de Desenvolvimento Web realizado. Por isso, foram disponibilizados pela Trybe alguns arquivos base de configurações e auxiliares ao desenvolvimento do projeto. Segue especificação de autoria dos principais documentos:
   
   Arquivos/diretórios desenvolvidos pela autora do projeto (Juliana Álvares):
