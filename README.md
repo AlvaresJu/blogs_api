@@ -67,12 +67,12 @@
 
 ## Funcionalidades Implementadas
 
-  - Construção de banco de dados MySQL com base no seguinte diagrama de Entidade-Relacionamento fornecido pela [Trybe](https://www.betrybe.com/):
+  - Construção de banco de dados MySQL, utilizando a ORM (Object Relational Mapper) Sequelize, com base no seguinte diagrama de Entidade-Relacionamento fornecido pela [Trybe](https://www.betrybe.com/):
 
     ![Diagrama ER do Banco][der-screenshot]
     Fonte: TRYBE, 2022
 
-  - API REST com os seguintes endpoints, conectados ao banco de dados:
+  - API REST com os seguintes endpoints, conectados ao banco de dados, desenvolvida em modelo de camadas MSC (Model, Service e Controller):
 
     [![Blogs API Routes Screen Shot][routes-screenshot]](https://documenter.getpostman.com/view/22433291/2s93RMVvf3)
 
