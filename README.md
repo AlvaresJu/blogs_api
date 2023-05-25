@@ -119,7 +119,7 @@
   Como descrito, este projeto foi proposto pela [Trybe](https://www.betrybe.com/) e desenvolvido por _[Juliana Álvares](https://www.linkedin.com/in/juliana-%C3%A1lvares-246872112/)_ durante o curso de Desenvolvimento Web realizado. Por isso, foram disponibilizados pela Trybe alguns arquivos base de configurações e auxiliares ao desenvolvimento do projeto. Segue especificação de autoria dos principais documentos:
   
   Arquivos/diretórios desenvolvidos pela autora do projeto (Juliana Álvares):
-  > README.md | api/images/** | api/src/controllers/** | api/src/middlewares/** | api/src/migrations/** | api/src/models/** | api/src/routers/** | api/src/services/** | api/src/utils/** | api/src/app.js
+  > README.md | api/images/** | quase todos os arquivios em api/src/* | documentação da API no Postman
   
   Arquivos/diretórios desenvolvidos pela Trybe:
   > Arquivos com configurações iniciais do projeto, como: api/.eslintrc.json | versão inicial do api/package.json e api/package-lock.json | api/.sequelizerc | api/src/config/** | api/src/models/index.js
