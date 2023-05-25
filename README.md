@@ -122,7 +122,7 @@
   > README.md | api/images/** | api/src/controllers/** | api/src/middlewares/** | api/src/migrations/** | api/src/models/** | api/src/routers/** | api/src/services/** | api/src/utils/** | api/src/app.js
   
   Arquivos/diretórios desenvolvidos pela Trybe:
-  > docker-compose.yml | Dockerfile | api/.eslintrc.json | api/package.json | api/package-lock.json | api/.sequelizerc | api/src/config/** | api/src/seeders/** | api/src/server.js | api/src/models/index.js
+  > Arquivos com configurações iniciais do projeto, como: api/.eslintrc.json | versão inicial do api/package.json e api/package-lock.json | api/.sequelizerc | api/src/config/** | api/src/models/index.js
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
